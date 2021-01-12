@@ -13,9 +13,21 @@
       <div
         v-for="(val, idx) in valor"
         :key="idx"
-        class="max-w-xs mx-auto my-1 shadow rounded border border-gray-200"
+        class="max-w-xs mx-auto my-1 md:my-2 lg:my-4 shadow rounded border border-gray-200"
       >
-        <span class="ml-3 text-gray-600 font-bold">{{ val.rating }},0</span>
+        <div class="my-2">
+          <div class="inline m-3">
+            <div v-for="(s, i) in stars" :key="i" class="inline m-1">
+              <img
+                v-if="s <= val.rating"
+                src="~/assets/con-fondo.png"
+                class="inline w-5"
+              />
+              <img v-else src="~/assets/sin-fondo.png" class="inline w-5" />
+            </div>
+          </div>
+          <span class="ml-3 text-gray-600 font-bold">{{ val.rating }},0</span>
+        </div>
         <address class="ml-3 text-xs text-gray-600">
           {{ val.author }} {{ unMeme(val.date) }}
         </address>
@@ -27,7 +39,7 @@
             type="button"
             :class="{
               'box-content ml-5 mb-2 rounded w-18 h-5 px-6 text-center py-2 border border-gray-200 hover:border-gray-600 hover:shadow-inner transform hover:scale-110': !val.clase,
-              'box-content text-white ml-5 mb-2 rounded w-18 h-5 px-6 text-center py-2 border border-gray-200 hover:border-gray-600 hover:shadow-inner bg-green-900':
+              'box-content text-white ml-5 mb-2 rounded w-18 h-5 px-6 text-center py-2 border border-gray-200 transform scale-110 bg-green-900':
                 val.clase,
             }"
             :disabled="val.clase"
@@ -46,6 +58,10 @@
 
 <script>
 export default {
+  data() {
+    const stars = [1, 2, 3, 4, 5]
+    return { stars }
+  },
   computed: {
     valor() {
       return this.$store.getters.getLista
