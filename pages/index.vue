@@ -5,7 +5,7 @@
     <div>
       <h1 class="pb-2 font-bold">Hola!</h1>
       <div>Suerte en la prueba!</div>
-      <div>{{ test }}</div>
+      <div>{{ data }}</div>
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
   async asyncData() {
     const { data } = await axios.get(`http://localhost:3000/api/test`)
 
-    return { test: data }
+    return { data }
   },
 }
 </script>

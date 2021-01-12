@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 module.exports = {
   root: true,
   env: {

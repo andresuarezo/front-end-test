@@ -1,6 +1,7 @@
+/* eslint-disable require-await */
+import { resolve } from 'path'
 import express from 'express'
 import axios from 'axios'
-import { resolve } from 'path'
 
 // Create express router
 const router = express.Router()
@@ -21,8 +22,8 @@ const fs = require('fs')
 router.get('/valoraciones', async (req, res, next) => {
   const path = './static/data/reviews.json'
 
-  let rawdata = fs.readFileSync(path)
-  let data = JSON.parse(rawdata)
+  const rawdata = fs.readFileSync(path)
+  const data = JSON.parse(rawdata)
 
   return res.json(data)
 })
@@ -30,8 +31,8 @@ router.get('/valoraciones', async (req, res, next) => {
 router.get('/test', async (req, res, next) => {
   const path = './static/data/test.json'
 
-  let rawdata = fs.readFileSync(path)
-  let data = JSON.parse(rawdata)
+  const rawdata = fs.readFileSync(path)
+  const data = JSON.parse(rawdata)
 
   return res.json(data)
 })
